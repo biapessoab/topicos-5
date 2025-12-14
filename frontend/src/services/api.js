@@ -4,7 +4,7 @@ import axios from 'axios';
 console.log('🔍 API URL:', process.env.REACT_APP_API_URL);
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3001'
+  baseURL: process.env.REACT_APP_API_URL || 'https://topicos-5.onrender.com'
 });
 
 api.interceptors.request.use((config) => {
