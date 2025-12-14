@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Questionnaire from './pages/Questionnaire';
 import Diagnosis from './pages/Diagnosis';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute.jsx';
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-// RF04: Questionário de Hábitos
+// RF04: Questionário de Hábitos - MELHORADO
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
@@ -7,6 +7,7 @@ function Questionnaire() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   
   const [formData, setFormData] = useState({
     // Sono
@@ -39,7 +40,15 @@ function Questionnaire() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Mostrar modal de confirmação antes de enviar
+    if (!showConfirm) {
+      setShowConfirm(true);
+      return;
+    }
+
     setLoading(true);
+    console.log('🚀 Enviando questionário:', formData);
 
     try {
       // Enviar questionário para o backend (RF04)
@@ -71,12 +80,15 @@ function Questionnaire() {
         localStorage.setItem('latestDiagnosis', JSON.stringify(response.data.diagnosis));
         localStorage.setItem('latestGoals', JSON.stringify(response.data.goals));
         
+        console.log('✅ Diagnóstico recebido:', response.data.diagnosis);
+        
         // Navegar para página de diagnóstico
         navigate('/diagnostico');
       }
     } catch (error) {
-      console.error('Erro ao enviar questionário:', error);
+      console.error('❌ Erro ao enviar questionário:', error);
       alert('Erro ao processar questionário. Tente novamente.');
+      setShowConfirm(false); // Resetar confirmação em caso de erro
     } finally {
       setLoading(false);
     }
@@ -84,6 +96,79 @@ function Questionnaire() {
 
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
+
+  // Modal de Confirmação
+  if (showConfirm && step === 4) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
+        <div className="max-w-2xl mx-auto px-4">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              📋 Confirme suas respostas
+            </h2>
+            
+            <div className="space-y-4 mb-6">
+              <div className="border-b pb-3">
+                <h3 className="font-semibold text-gray-700">😴 Sono</h3>
+                <p className="text-gray-600">Duração: {formData.sleepDuration}h | Qualidade: {formData.sleepQuality}/10</p>
+              </div>
+              
+              <div className="border-b pb-3">
+                <h3 className="font-semibold text-gray-700">🏃‍♂️ Exercício</h3>
+                <p className="text-gray-600">
+                  {formData.exerciseFrequency}x/semana | {formData.exerciseDuration}min | Intensidade: {formData.exerciseIntensity}
+                </p>
+              </div>
+              
+              <div className="border-b pb-3">
+                <h3 className="font-semibold text-gray-700">🥗 Alimentação</h3>
+                <p className="text-gray-600">
+                  Vegetais: {formData.nutritionVegetables} | Frutas: {formData.nutritionFruits} | 
+                  Água: {formData.nutritionWater}L | Fast Food: {formData.nutritionFastFood}x/semana
+                </p>
+              </div>
+              
+              <div className="border-b pb-3">
+                <h3 className="font-semibold text-gray-700">🧠 Saúde Mental</h3>
+                <p className="text-gray-600">
+                  Estresse: {formData.stressLevel}/10 | Qualidade de vida: {formData.qualityOfLife}/10
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <button
+                type="button"
+                onClick={() => setShowConfirm(false)}
+                className="flex-1 px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition"
+                disabled={loading}
+              >
+                Revisar
+              </button>
+              <button
+                type="button"
+                onClick={handleSubmit}
+                disabled={loading}
+                className="flex-1 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition disabled:bg-gray-400 flex items-center justify-center"
+              >
+                {loading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Analisando...
+                  </>
+                ) : (
+                  'Confirmar e Enviar'
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // RNF01: Questionário deve ser respondido em menos de 5 minutos
   return (
@@ -424,7 +509,7 @@ function Questionnaire() {
                   disabled={loading}
                   className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition disabled:bg-gray-400"
                 >
-                  {loading ? 'Processando...' : 'Finalizar'}
+                  {loading ? 'Processando...' : 'Revisar e Finalizar'}
                 </button>
               )}
             </div>

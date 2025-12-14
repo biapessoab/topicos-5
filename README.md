@@ -1,27 +1,27 @@
-# 🏥 Saúde+ Preventiva
+# Saúde+ Preventiva
 
 Sistema de Apoio Inteligente para Hábitos Saudáveis
 
-## 📖 Sobre o Projeto
+## Sobre o Projeto
 
 O **Saúde+ Preventiva** é um sistema web desenvolvido para auxiliar estudantes universitários e jovens profissionais a manterem hábitos mais saudáveis, focando em:
-- 😴 Qualidade do sono
-- 🏃‍♂️ Prática de exercícios
-- 🥗 Alimentação equilibrada
-- 🧠 Saúde mental
+- Qualidade do sono
+- Prática de exercícios
+- Alimentação equilibrada
+- Saúde mental
 
-## 🎯 Funcionalidades Principais (MVP)
+## Funcionalidades Principais (MVP)
 
-- ✅ **RF01-03**: Cadastro, autenticação e recuperação de senha
-- ✅ **RF04**: Questionário de hábitos (4 áreas de saúde)
-- ✅ **RF05**: Diagnóstico personalizado baseado em IA (sistema de regras)
-- ✅ **RF06**: Recomendação de 2-3 metas semanais
-- ✅ **RF07**: Registro de progresso (checkboxes)
-- ✅ **RF08**: Dashboard com visualização de progresso
-- ✅ **RF09**: Dicas educativas personalizadas
-- ✅ **RF10**: Gestão de conteúdo (admin)
+- **RF01-03**: Cadastro, autenticação e recuperação de senha
+- **RF04**: Questionário de hábitos (4 áreas de saúde)
+- **RF05**: Diagnóstico personalizado baseado em IA (sistema de regras)
+- **RF06**: Recomendação de 2-3 metas semanais
+- **RF07**: Registro de progresso (checkboxes)
+- **RF08**: Dashboard com visualização de progresso
+- **RF09**: Dicas educativas personalizadas
+- **RF10**: Gestão de conteúdo (admin)
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 ### Frontend
 - React.js 18
@@ -40,14 +40,14 @@ O **Saúde+ Preventiva** é um sistema web desenvolvido para auxiliar estudantes
 - Backend: Render
 - Banco: Supabase
 
-## 📋 Pré-requisitos
+## Pré-requisitos
 
 Antes de começar, você precisa ter instalado:
 - [Node.js](https://nodejs.org/) (versão 18 ou superior)
 - [Git](https://git-scm.com/)
 - Conta no [Supabase](https://supabase.com) (gratuita)
 
-## 🚀 Instalação e Configuração
+## Instalação e Configuração
 
 ### 1. Clone o Repositório
 
@@ -136,7 +136,7 @@ npm start
 
 O frontend estará rodando em `http://localhost:3000`
 
-## 📁 Estrutura de Arquivos
+## Estrutura de Arquivos
 
 ```
 saude-preventiva/
@@ -153,7 +153,7 @@ saude-preventiva/
 │   │   │   ├── progressRoutes.js
 │   │   │   └── contentRoutes.js
 │   │   ├── services/
-│   │   │   └── aiService.js
+│   │   │   └── huggingfaceService.js
 │   │   └── server.js
 │   ├── .env
 │   └── package.json
@@ -175,7 +175,7 @@ saude-preventiva/
 └── README.md
 ```
 
-## 🧪 Testes
+## Testes
 
 ### Testar Cadastro (RF01)
 1. Acesse `http://localhost:3000/register`
@@ -199,7 +199,7 @@ saude-preventiva/
 2. Verifique se barra de progresso atualiza
 3. Desmarque e verifique novamente
 
-## 📊 Testes Automatizados
+## Testes Automatizados
 
 Para executar testes:
 
@@ -208,7 +208,7 @@ cd backend
 npm test
 ```
 
-## 🌐 Deploy
+## Deploy
 
 ### Deploy do Frontend (Vercel)
 
@@ -242,7 +242,7 @@ const api = axios.create({
 });
 ```
 
-## 📝 Requisitos Atendidos
+## Requisitos Atendidos
 
 ### Funcionais Essenciais (MVP)
 - [x] RF01: Cadastro de Usuário
@@ -266,7 +266,7 @@ const api = axios.create({
 - [x] RNF07: Manutenibilidade
 - [x] RNF08: Controle de Versão (Git)
 
-## 🔮 Roadmap Futuro
+## Roadmap Futuro
 
 ### Entrega 2
 - [ ] RF12: Histórico de progresso
@@ -279,24 +279,9 @@ const api = axios.create({
 - [ ] RF11: Login social (Google)
 - [ ] RNF10: Integração com APIs externas
 
-## 👥 Equipe
+## Equipe
 
-- **Desenvolvedor 1**: Backend (Auth + API)
-- **Desenvolvedor 2**: Frontend (UI/UX)
-- **Desenvolvedor 3**: Sistema de IA (Regras)
-- **Desenvolvedor 4**: Testes + Deploy
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT.
-
-## 🆘 Suporte
-
-Para dúvidas ou problemas:
-1. Verifique este README
-2. Consulte a documentação das tecnologias usadas
-3. Abra uma issue no GitHub
-
----
-
-**Desenvolvido com ❤️ pela equipe Saúde+ Preventiva**
+- **Ana Beatriz Braz** - Desenvolvimento e Implementação
+- **Beatriz Fulgêncio** - Desenvolvimento e Implementação
+- **Letícia Guimarães** - Desenvolvimento e Implementação
+- **Thiago Cardozo** - Desenvolvimento e Implementação
