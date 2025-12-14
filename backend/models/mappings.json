@@ -1,0 +1,42 @@
+{
+  "gender": {
+    "Female": 0,
+    "Male": 1
+  },
+  "occupation": {
+    "Accountant": 0,
+    "Doctor": 1,
+    "Engineer": 2,
+    "Lawyer": 3,
+    "Manager": 4,
+    "Nurse": 5,
+    "Sales Representative": 6,
+    "Salesperson": 7,
+    "Scientist": 8,
+    "Software Engineer": 9,
+    "Teacher": 10
+  },
+  "bmi": {
+    "Normal": 0,
+    "Normal Weight": 1,
+    "Obese": 2,
+    "Overweight": 3
+  },
+  "disorders": {
+    "0": "Insomnia",
+    "1": "None",
+    "2": "Sleep Apnea"
+  },
+  "feature_names": [
+    "Age",
+    "Sleep Duration",
+    "Quality of Sleep",
+    "Physical Activity Level",
+    "Stress Level",
+    "Heart Rate",
+    "Daily Steps",
+    "Gender_encoded",
+    "Occupation_encoded",
+    "BMI Category_encoded"
+  ]
+}

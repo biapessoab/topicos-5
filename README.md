@@ -238,7 +238,7 @@ Após deploy do backend, atualize `frontend/src/services/api.js`:
 
 ```javascript
 const api = axios.create({
-  baseURL: 'https://seu-backend.onrender.com'
+  baseURL: 'https://topicos-5.onrender.com'
 });
 ```
 

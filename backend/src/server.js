@@ -10,8 +10,16 @@ const contentRoutes = require('./routes/contentRoutes');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// ⭐ Configuração de CORS corrigida
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || '*',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
 // Middlewares
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Rotas
@@ -36,6 +44,7 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
+  console.log(`🌐 CORS habilitado para: ${process.env.FRONTEND_URL || 'todas as origens'}`);
 });
 
 module.exports = app;
